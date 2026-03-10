@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <title>amis demo</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <link rel="stylesheet" href="./sdk.css" />
+    <link rel="stylesheet" href="./helper.css" />
+    <link rel="stylesheet" href="./iconfont.css" />
+    <!-- 这是默认主题所需的，如果是其他主题则不需要 -->
+    <!-- 从 1.1.0 开始 sdk.css 将不支持 IE 11，如果要支持 IE11 请引用这个 css，并把前面那个删了 -->
+    <!-- <link rel="stylesheet" href="sdk-ie11.css" /> -->
+    <!-- 不过 amis 开发团队几乎没测试过 IE 11 下的效果，所以可能有细节功能用不了，如果发现请报 issue -->
+    <style>
+      html,
+      body,
+      .app-wrapper {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root" class="app-wrapper"></div>
+    <script src="./sdk.js"></script>
+    <script type="text/javascript">
+      (function () {
+        let amis = amisRequire('amis/embed');
+        // 通过替换下面这个配置来生成不同页面
+        let amisJSON = {
+          title: '表单向导',
+          body: [
+            {
+              type: 'wizard',
+              api: '/amis/api/mock2/form/saveForm?waitSeconds=2',
+              initApi: '/amis/api/mock2/form/initData?waitSeconds=2',
+              steps: [
+                {
+                  title: '第一步',
+                  body: [
+                    {
+                      name: 'website',
+                      label: '网址',
+                      type: 'input-url',
+                      required: true,
+                    },
+                    {
+                      name: 'name',
+                      label: '名称',
+                      type: 'input-text',
+                      required: true,
+                    },
+                  ],
+                },
+                {
+                  title: 'Step 2',
+                  body: [
+                    {
+                      name: 'email2',
+                      label: '邮箱',
+                      type: 'input-email',
+                      required: true,
+                    },
+                  ],
+                },
+                {
+                  title: 'Step 3',
+                  body: ['这是最后一步了'],
+                },
+              ],
+            },
+            {
+              type: 'wizard',
+              api: '/amis/api/mock2/form/saveForm?waitSeconds=2',
+              mode: 'vertical',
+              steps: [
+                {
+                  title: '第一步',
+                  body: [
+                    {
+                      name: 'website',
+                      label: '网址',
+                      type: 'input-url',
+                      required: true,
+                    },
+                    {
+                      name: 'email',
+                      label: '邮箱',
+                      type: 'input-email',
+                      required: true,
+                    },
+                  ],
+                },
+                {
+                  title: 'Step 2',
+                  body: [
+                    {
+                      name: 'email2',
+                      label: '邮箱',
+                      type: 'input-email',
+                      required: true,
+                    },
+                  ],
+                },
+                {
+                  title: 'Step 3',
+                  body: ['这是最后一步了'],
+                },
+              ],
+            },
+            {
+              type: 'wizard',
+              steps: [
+                {
+                  title: '第一步',
+                  body: [
+                    {
+                      name: 'website',
+                      label: '网址',
+                      type: 'input-url',
+                      required: true,
+                    },
+                    {
+                      name: 'email',
+                      label: '邮箱',
+                      type: 'input-email',
+                      required: true,
+                    },
+                  ],
+                  api: '/amis/api/mock2/form/saveForm?waitSeconds=2',
+                },
+                {
+                  title: '第二步',
+                  body: [
+                    {
+                      name: 'test1',
+                      type: 'input-email',
+                      label: 'Email',
+                      value: 'test@test.com',
+                    },
+                    {
+                      type: 'divider',
+                    },
+                    {
+                      type: 'input-text',
+                      name: 'test2',
+                      label: '必填示例',
+                      required: true,
+                    },
+                    {
+                      type: 'divider',
+                    },
+                    {
+                      type: 'input-text',
+                      name: 'test3',
+                      placeholder: '可选',
+                    },
+                  ],
+                  initApi: '/amis/api/mock2/form/initForm',
+                  api: '/amis/api/mock2/form/saveForm?waitSeconds=2',
+                },
+                {
+                  title: '确定',
+                  body: ['最后一步了，确认要提交吗？'],
+                  api: '/amis/api/mock2/form/saveForm?waitSeconds=2',
+                },
+              ],
+            },
+          ],
+        };
+        let amisScoped = amis.embed('#root', amisJSON);
+      })();
+    </script>
+  </body>
+</html>
