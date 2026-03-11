@@ -99,6 +99,29 @@
                   },
                 ],
               },
+
+              {
+                type: 'select',
+                name: 'image_tag',
+                label: 'Image Tag',
+                options: [
+                  {
+                    label: 'Exodus-AWS1-v1',
+                    value: 'v1',
+                    visibleOn: "data.project=='project11' && data.environment=='p11-dev'",
+                  },
+                  {
+                    label: 'Exodus-AWS2-v2',
+                    value: 'v2',
+                    visibleOn: "data.project=='project12' && data.environment=='p12-staging'",
+                  },
+                  {
+                    label: 'Exodus-AWS3-v3',
+                    value: 'v3',
+                    visibleOn: "data.project=='project13' && data.environment=='p13-prod'",
+                  },
+                ],
+              },
             ],
           },
         };
