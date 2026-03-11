@@ -50,6 +50,26 @@
                 type: 'input-email',
                 name: 'email',
               },
+              {
+                type: 'select',
+                name: 'environment',
+                label: 'Deploy Environment',
+                required: true,
+                options: [
+                  {
+                    label: 'Development',
+                    value: 'dev',
+                  },
+                  {
+                    label: 'Staging',
+                    value: 'staging',
+                  },
+                  {
+                    label: 'Production',
+                    value: 'prod',
+                  },
+                ],
+              },
             ],
           },
         };
