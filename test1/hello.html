@@ -41,14 +41,34 @@
             api: '/saveForm',
             body: [
               {
-                label: 'Name',
                 type: 'input-text',
                 name: 'name',
+                label: 'Name',
               },
               {
-                label: 'Email',
                 type: 'input-email',
                 name: 'email',
+                label: 'Email',
+              },
+              {
+                type: 'select',
+                name: 'project',
+                label: 'Deploy Project',
+                required: true,
+                options: [
+                  {
+                    label: 'Project11',
+                    value: 'project11',
+                  },
+                  {
+                    label: 'Project12',
+                    value: 'project12',
+                  },
+                  {
+                    label: 'Project13',
+                    value: 'project13',
+                  },
+                ],
               },
               {
                 type: 'select',
@@ -57,16 +77,24 @@
                 required: true,
                 options: [
                   {
-                    label: 'Development',
+                    label: 'project11 development',
                     value: 'dev',
+                    visibleOn: "data.project == 'project11'",
                   },
                   {
-                    label: 'Staging',
+                    label: 'project11 Staging',
                     value: 'staging',
+                    visibleOn: "data.project == 'project11'",
                   },
                   {
-                    label: 'Production',
+                    label: 'project12 Staging',
+                    value: 'p12-staging',
+                    visibleOn: "data.project == 'project12'",
+                  },
+                  {
+                    label: 'project13 Production',
                     value: 'prod',
+                    visibleOn: "data.project == 'project13'",
                   },
                 ],
               },
